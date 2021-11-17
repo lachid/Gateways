@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gateways.Core.Models\Gateways.Core.Models.csproj" />
+    <ProjectReference Include="..\Gateways.Core\Gateways.Core.csproj" />
+    <ProjectReference Include="..\Gateways.Data\Gateways.Data.csproj" />
+  </ItemGroup>
+
+</Project>

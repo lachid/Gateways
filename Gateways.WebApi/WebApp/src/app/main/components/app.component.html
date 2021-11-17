@@ -1,0 +1,9 @@
+<p-toast appendTo="body" [baseZIndex]="12000"></p-toast>
+<p-confirmDialog #cd appendTo="body" [baseZIndex]="11000" header="Confirm Action">
+    <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="No" class="p-button-secondary" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
+
+<app-layout></app-layout>

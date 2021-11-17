@@ -1,0 +1,63 @@
+<div class="card">
+    <h1>Gateways</h1>
+
+    <div class="tool-bar">
+        <button pButton label="Add Gateway" (click)="create()"></button>
+    </div>
+
+    <p-table [value]="gateways" dataKey="id">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 2.25em"></th>
+                <th>Serial Number</th>
+                <th>Name</th>
+                <th>Ip Address</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-gateway let-expanded="expanded">
+            <tr>
+                <td>
+                    <a [pRowToggler]="gateway">
+                        <i [ngClass]="expanded ? 'pi pi-fw pi-chevron-circle-down' : 'pi pi-fw pi-chevron-circle-right'"></i>
+                    </a>
+                </td>
+                <td>{{ gateway.serialNumber }}</td>
+                <td>{{ gateway.name }}</td>
+                <td>{{ gateway.ipAddressV4 }}</td>
+                <td>
+                    <a class="button-link" (click)="view(gateway)">View</a> |
+                    <a class="danger" (click)="remove(gateway.id)">Delete</a>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="rowexpansion" let-gateway let-columns="columns">
+            <tr>
+                <td [attr.colspan]="5">
+                    <peripheral-device-list
+                        [devices]="gateway.devices"
+                        [maxDevices]="maxDevicesAllowed"
+                        (saved)="addDevice(gateway.id, $event)"
+                        (removed)="removeDevice(gateway.id, $event)"
+                    ></peripheral-device-list>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<!-- Edit Dialog -->
+<gateway-edit-dialog *ngIf="_creating"
+    (saved)="onEditDialogSaved($event)"
+    (closed)="onEditDialogClosed()"
+></gateway-edit-dialog>
+<!-- Edit Dialog -->
+
+<!-- View Details Dialog -->
+<gateway-details-dialog *ngIf="_viewingItem"
+    [item]="_viewingItem"
+    (closed)="onDetailsDialogClosed()"
+></gateway-details-dialog>
+<!-- View Details Dialog -->

@@ -1,0 +1,33 @@
+a {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button-link {
+    color: #2196F3;
+}
+
+.danger {
+    color: red;
+}
+
+.tool-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2px;
+}
+
+.p-float-label {
+    margin-top: 24px;
+}
+
+.p-float-label input {
+    width: 100%;
+}
+
+.p-float-label .p-dropdown {
+    width: 100%;
+}

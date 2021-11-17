@@ -1,0 +1,48 @@
+<p-dialog *ngIf="item"
+    header="Gateway Details"
+    [(visible)]="_visible"
+    [style]="{'max-width': '450px', width: '100%'}"
+    [draggable]="false"
+    (onHide)="close()"
+>
+    <p-table [value]="[item]">
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>Ip Address</td>
+                <td>{{ item!.ipAddressV4 }}</td>
+            </tr>
+            <tr>
+                <td>Serial Number</td>
+                <td>{{ item!.serialNumber }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    
+    <h3>Devices</h3>
+    <ng-container *ngFor="let device of item!.devices">
+        <p-divider align="left">
+            <b>{{ device!.vendor }}</b>
+        </p-divider>
+
+        <p-table [value]="[device]">
+            <ng-template pTemplate="body" let-device>
+                <tr>
+                    <td>Date Created</td>
+                    <td>{{ device!.dateCreated | date:'shortDate' }}</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>{{ device!.status | deviceStatus }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </ng-container>
+    
+    <ng-template pTemplate="footer">
+        <button pButton
+            label="Close"
+            class="p-button-secondary"
+            (click)="close()"
+        ></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,35 @@
+<p-dialog
+    header="Add Gateway"
+    [(visible)]="_visible"
+    [style]="{'max-width': '400px', width: '100%'}"
+    [draggable]="false"
+    (onHide)="close()"
+>
+    <span class="p-float-label">
+        <input type="text" id="serialNumber" pInputText [(ngModel)]="item.serialNumber"> 
+        <label for="serialNumber">Serial Number</label>
+    </span>
+
+    <span class="p-float-label">
+        <input type="text" id="name" pInputText [(ngModel)]="item.name"> 
+        <label for="name">Name</label>
+    </span>
+
+    <span class="p-float-label">
+        <input type="text" id="ipAddressV4" pInputText [(ngModel)]="item.ipAddressV4"> 
+        <label for="ipAddressV4">Ip Address</label>
+    </span>
+
+    <ng-template pTemplate="footer">
+        <button pButton
+            label="Close"
+            class="p-button-secondary"
+            (click)="close()"
+        ></button>
+        <button pButton
+            label="Save"
+            [disabled]="_saving"
+            (click)="save()"
+        ></button>
+    </ng-template>
+</p-dialog>

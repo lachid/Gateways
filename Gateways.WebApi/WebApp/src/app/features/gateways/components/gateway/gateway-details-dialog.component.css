@@ -1,0 +1,8 @@
+p-table tr td {
+    border-width: 0;
+}
+
+p-table tr td:first-of-type {
+    font-weight: bold;
+    color: #A6A6A6;
+}

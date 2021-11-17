@@ -1,0 +1,31 @@
+<p-dialog
+    header="Add Device"
+    [(visible)]="_visible"
+    [style]="{'max-width': '400px', width: '100%'}"
+    [draggable]="false"
+    (onHide)="close()"
+>
+    <span class="p-float-label">
+        <input type="text" id="vendor" pInputText [(ngModel)]="item.vendor"> 
+        <label for="vendor">Vendor</label>
+    </span>
+
+    <span class="p-float-label">
+        <p-dropdown appendTo="body"
+            id="status" [autoDisplayFirst]="false"
+            [options]="statusOptions" [(ngModel)]="item.status"></p-dropdown>
+        <label for="status">Status</label>
+    </span>
+
+    <ng-template pTemplate="footer">
+        <button pButton
+            label="Close"
+            class="p-button-secondary"
+            (click)="close()"
+        ></button>
+        <button pButton
+            label="Save"
+            (click)="save()"
+        ></button>
+    </ng-template>
+</p-dialog>
